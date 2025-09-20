@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resources - LearnHub</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">Learn<span>Hub</span></div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="articles.html">Articles</a></li>
+                    <li><a href="tutorials.html">Tutorials</a></li>
+                    <li><a href="resources.html" class="active">Resources</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Resources</h1>
+            <p>Curated tools, libraries, and materials to support your learning journey</p>
+        </div>
+    </section>
+
+    <!-- Resources Section -->
+    <section class="resources-section">
+        <div class="container">
+            <div class="resource-categories">
+                <h2>Browse Resources by Category</h2>
+                <div class="category-tabs">
+                    <button class="tab-btn active" data-category="webdev">Web Development</button>
+                    <button class="tab-btn" data-category="datascience">Data Science</button>
+                    <button class="tab-btn" data-category="design">Design</button>
+                    <button class="tab-btn" data-category="marketing">Marketing</button>
+                </div>
+            </div>
+
+            <div class="resource-content">
+                <div class="resource-category active" id="webdev-resources">
+                    <h2>Web Development Resources</h2>
+                    <div class="resources-grid">
+                        <div class="resource-card">
+                            <div class="resource-icon">
+                                <i class="fab fa-html5"></i>
+                            </div>
+                            <h3>HTML5 Reference</h3>
+                            <p>Complete guide to HTML5 elements, attributes, and best practices.</p>
+                            <a href="#" class="resource-link">View Resource</a>
+                        </div>
+
+                        <div class="resource-card">
+                            <div class="resource-icon">
+                                <i class="fab fa-css3-alt"></i>
+                            </div>
+                            <h3>CSS Tricks</h3>
+                            <p>Collection of CSS tips, tricks, and techniques for modern web design.</p>
+                            <a href="#" class="resource-link">View Resource</a>
+                        </div>
+
+                        <div class="resource-card">
+                            <div class="resource-icon">
+                                <i class="fab fa-js"></i>
+                            </div>
+                            <h3>JavaScript Documentation</h3>
+                            <p>Official documentation and guides for JavaScript programming.</p>
+                            <a href="#" class="resource-link">View Resource</a>
+                        </div>
+
+                        <div class="resource-card">
+                            <div class="resource-icon">
+                                <i class="fab fa-react"></i>
+                            </div>
+                            <h3>React Resources</h3>
+                            <p>Comprehensive collection of React libraries, tools, and tutorials.</p>
+                            <a href="#" class="resource-link">View Resource</a>
+                        </div>
+
+                        <div class="resource-card">
+                            <div class="resource-icon">
+                                <i class="fas fa-server"></i>
+                            </div>
+                            <h3>Backend Development</h3>
+                            <p>Resources for server-side programming, databases, and APIs.</p>
+                            <a href="#" class="resource-link">View Resource</a>
+                        </div>
+
+                        <div class="resource-card">
+                            <div class="resource-icon">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <h3>Responsive Design</h3>
+                            <p>Tools and frameworks for creating mobile-friendly websites.</p>
+                            <a href="#" class="resource-link">View Resource</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="resource-category" id="datascience-resources">
+                    <h2>Data Science Resources</h2>
+                    <div class="resources-grid">
+                        <div class="resource-card">
+                            <div class="resource-icon">
+                                <i class="fab fa-python"></i>
+                            </div>
+                            <h3>Python for Data Science</h3>
+                            <p>Essential Python libraries and tools for data analysis and visualization.</p>
+                            <a href="#" class="resource-link">View Resource</a>
+                        </div>
+
+                        <div class="resource-card">
+                            <div class="resource-icon">
+                                <i class="fas fa-chart-bar"></i>
+                            </div>
+                            <h3>Data Visualization</h3>
+                            <p>Tools and libraries for creating effective data visualizations.</p>
+                            <a href="#" class="resource-link">View Resource</a>
+                        </div>
+
+                        <div class="resource-card">
+                            <div class="resource-icon">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                            <h3>Machine Learning</h3>
+                            <p>Frameworks and resources for machine learning projects.</p>
+                            <a href="#" class="resource-link">View Resource</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Additional resource categories would follow the same pattern -->
+            </div>
+
+            <div class="free-resources">
+                <h2>Free Learning Resources</h2>
+                <div class="free-resources-grid">
+                    <div class="free-resource">
+                        <h3>E-Books</h3>
+                        <p>Download our free e-books on various programming topics.</p>
+                        <a href="#" class="btn-small">Download</a>
+                    </div>
+
+                    <div class="free-resource">
+                        <h3>Cheat Sheets</h3>
+                        <p>Quick reference guides for popular programming languages and frameworks.</p>
+                        <a href="#" class="btn-small">Download</a>
+                    </div>
+
+                    <div class="free-resource">
+                        <h3>Code Templates</h3>
+                        <p>Starter templates for common web development projects.</p>
+                        <a href="#" class="btn-small">Download</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <div class="container">
+            <h2>Get Exclusive Resources</h2>
+            <p>Subscribe to access premium resources and regular updates.</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Enter your email address">
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>About LearnHub</h3>
+                    <p>LearnHub is an educational blog dedicated to providing high-quality learning content across various domains.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="articles.html">Articles</a></li>
+                        <li><a href="tutorials.html">Tutorials</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Categories</h3>
+                    <ul>
+                        <li><a href="tutorials.html#webdev">Web Development</a></li>
+                        <li><a href="tutorials.html#datascience">Data Science</a></li>
+                        <li><a href="tutorials.html#design">Design</a></li>
+                        <li><a href="tutorials.html#marketing">Digital Marketing</a></li>
+                        <li><a href="tutorials.html">Programming</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Connect With Us</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 LearnHub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

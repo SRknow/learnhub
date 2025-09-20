@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Articles - LearnHub</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">Learn<span>Hub</span></div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="articles.html" class="active">Articles</a></li>
+                    <li><a href="tutorials.html">Tutorials</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Articles</h1>
+            <p>Explore our latest articles on various topics</p>
+        </div>
+    </section>
+
+    <!-- Articles Section -->
+    <section class="articles-list">
+        <div class="container">
+            <div class="filter-options">
+                <h3>Filter by Category:</h3>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="webdev">Web Development</button>
+                    <button class="filter-btn" data-filter="datascience">Data Science</button>
+                    <button class="filter-btn" data-filter="design">Design</button>
+                    <button class="filter-btn" data-filter="marketing">Marketing</button>
+                </div>
+            </div>
+
+            <div class="articles-grid">
+                <article class="article-item" data-category="webdev">
+                    <div class="article-img">
+                        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Web Development">
+                    </div>
+                    <div class="article-content">
+                        <span class="article-category">Web Development</span>
+                        <h3>Getting Started with React.js</h3>
+                        <p class="article-meta">June 20, 2023 | 10 min read</p>
+                        <p>Learn the fundamentals of React.js and how to build your first application with this popular JavaScript library.</p>
+                        <a href="#" class="read-more">Read More</a>
+                    </div>
+                </article>
+
+                <article class="article-item" data-category="datascience">
+                    <div class="article-img">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Data Science">
+                    </div>
+                    <div class="article-content">
+                        <span class="article-category">Data Science</span>
+                        <h3>Introduction to Machine Learning Algorithms</h3>
+                        <p class="article-meta">June 18, 2023 | 15 min read</p>
+                        <p>Explore the different types of machine learning algorithms and understand when to use each one.</p>
+                        <a href="#" class="read-more">Read More</a>
+                    </div>
+                </article>
+
+                <article class="article-item" data-category="design">
+                    <div class="article-img">
+                        <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="UI/UX Design">
+                    </div>
+                    <div class="article-content">
+                        <span class="article-category">Design</span>
+                        <h3>UI/UX Design Principles for 2023</h3>
+                        <p class="article-meta">June 15, 2023 | 12 min read</p>
+                        <p>Discover the latest UI/UX design trends and principles that will help you create better user experiences.</p>
+                        <a href="#" class="read-more">Read More</a>
+                    </div>
+                </article>
+
+                <article class="article-item" data-category="marketing">
+                    <div class="article-img">
+                        <img src="https://images.unsplash.com/photo-1432888622747-4eb9a8f5a07a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Digital Marketing">
+                    </div>
+                    <div class="article-content">
+                        <span class="article-category">Marketing</span>
+                        <h3>Content Marketing Strategies That Convert</h3>
+                        <p class="article-meta">June 12, 2023 | 8 min read</p>
+                        <p>Learn how to create content that not only attracts visitors but also converts them into customers.</p>
+                        <a href="#" class="read-more">Read More</a>
+                    </div>
+                </article>
+
+                <article class="article-item" data-category="webdev">
+                    <div class="article-img">
+                        <img src="https://images.unsplash.com/photo-1581276879432-15e50529f34b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Web Performance">
+                    </div>
+                    <div class="article-content">
+                        <span class="article-category">Web Development</span>
+                        <h3>Optimizing Website Performance</h3>
+                        <p class="article-meta">June 10, 2023 | 14 min read</p>
+                        <p>Discover techniques to improve your website's loading speed and overall performance.</p>
+                        <a href="#" class="read-more">Read More</a>
+                    </div>
+                </article>
+
+                <article class="article-item" data-category="datascience">
+                    <div class="article-img">
+                        <img src="https://images.unsplash.com/photo-1534723328310-e82dad3ee43f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Data Visualization">
+                    </div>
+                    <div class="article-content">
+                        <span class="article-category">Data Science</span>
+                        <h3>Data Visualization with Python</h3>
+                        <p class="article-meta">June 8, 2023 | 11 min read</p>
+                        <p>Learn how to create compelling visualizations using Python libraries like Matplotlib and Seaborn.</p>
+                        <a href="#" class="read-more">Read More</a>
+                    </div>
+                </article>
+            </div>
+
+            <div class="pagination">
+                <a href="#" class="page-link active">1</a>
+                <a href="#" class="page-link">2</a>
+                <a href="#" class="page-link">3</a>
+                <a href="#" class="page-link">Next →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <div class="container">
+            <h2>Never Miss an Article</h2>
+            <p>Subscribe to our newsletter and get the latest articles delivered to your inbox.</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Enter your email address">
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>About LearnHub</h3>
+                    <p>LearnHub is an educational blog dedicated to providing high-quality learning content across various domains.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="articles.html">Articles</a></li>
+                        <li><a href="tutorials.html">Tutorials</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Categories</h3>
+                    <ul>
+                        <li><a href="tutorials.html#webdev">Web Development</a></li>
+                        <li><a href="tutorials.html#datascience">Data Science</a></li>
+                        <li><a href="tutorials.html#design">Design</a></li>
+                        <li><a href="tutorials.html#marketing">Digital Marketing</a></li>
+                        <li><a href="tutorials.html">Programming</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Connect With Us</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 LearnHub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
