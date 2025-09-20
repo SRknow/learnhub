@@ -6,6 +6,362 @@
     <title>LearnHub - Educational Blog</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Auth Buttons */
+        .auth-buttons {
+            display: flex;
+            gap: 12px;
+            margin-left: 30px;
+        }
+
+        .btn-login, .btn-signup {
+            padding: 8px 20px;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-login {
+            background: transparent;
+            border: 2px solid #4a6fa5;
+            color: #4a6fa5;
+        }
+
+        .btn-login:hover {
+            background: #4a6fa5;
+            color: white;
+        }
+
+        .btn-signup {
+            background: #fd7e14;
+            border: 2px solid #fd7e14;
+            color: white;
+        }
+
+        .btn-signup:hover {
+            background: #e67300;
+            border-color: #e67300;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+            animation: fadeIn 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            width: 90%;
+            max-width: 450px;
+            position: relative;
+            animation: slideIn 0.3s;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            position: absolute;
+            right: 20px;
+            top: 15px;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: #343a40;
+        }
+
+        .modal-content h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #4a6fa5;
+        }
+
+        /* Auth Form Styles */
+        .auth-form {
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #343a40;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus {
+            border-color: #4a6fa5;
+            outline: none;
+        }
+
+        .form-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding-left: 30px;
+            cursor: pointer;
+            font-size: 14px;
+            user-select: none;
+        }
+
+        .checkbox-container input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+        }
+
+        .checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 20px;
+            width: 20px;
+            background-color: #eee;
+            border-radius: 4px;
+        }
+
+        .checkbox-container:hover input ~ .checkmark {
+            background-color: #ccc;
+        }
+
+        .checkbox-container input:checked ~ .checkmark {
+            background-color: #4a6fa5;
+        }
+
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+
+        .checkbox-container input:checked ~ .checkmark:after {
+            display: block;
+        }
+
+        .checkbox-container .checkmark:after {
+            left: 7px;
+            top: 3px;
+            width: 5px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+
+        .forgot-password {
+            color: #4a6fa5;
+            font-size: 14px;
+            text-decoration: none;
+        }
+
+        .forgot-password:hover {
+            text-decoration: underline;
+        }
+
+        .btn-auth {
+            width: 100%;
+            padding: 12px;
+            background: #4a6fa5;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn-auth:hover {
+            background: #166d67;
+        }
+
+        .auth-divider {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+            color: #6c757d;
+        }
+
+        .auth-divider::before,
+        .auth-divider::after {
+            content: "";
+            flex: 1;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .auth-divider span {
+            padding: 0 10px;
+        }
+
+        .social-auth {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .btn-social {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background: white;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn-social:hover {
+            background: #f5f5f5;
+        }
+
+        .google-btn {
+            color: #DB4437;
+        }
+
+        .github-btn {
+            color: #343a40;
+        }
+
+        .auth-switch {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        .auth-switch a {
+            color: #4a6fa5;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .auth-switch a:hover {
+            text-decoration: underline;
+        }
+
+        /* Password Strength Meter */
+        .password-strength {
+            margin-top: 8px;
+        }
+
+        .strength-meter {
+            height: 5px;
+            background: #eee;
+            border-radius: 3px;
+            overflow: hidden;
+            margin-bottom: 5px;
+        }
+
+        .strength-fill {
+            height: 100%;
+            width: 0;
+            border-radius: 3px;
+            transition: width 0.3s, background 0.3s;
+        }
+
+        #passwordStrengthText {
+            font-size: 12px;
+            color: #6c757d;
+        }
+
+        /* Responsive Styles for Auth */
+        @media (max-width: 768px) {
+            .auth-buttons {
+                margin-left: 15px;
+            }
+            
+            .btn-login, .btn-signup {
+                padding: 6px 12px;
+                font-size: 12px;
+            }
+            
+            .modal-content {
+                margin: 10% auto;
+                width: 95%;
+                padding: 20px;
+            }
+            
+            .form-options {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            
+            .forgot-password {
+                margin-top: 5px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .auth-buttons {
+                display: none;
+            }
+            
+            .mobile-auth-buttons {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                margin-top: 20px;
+            }
+            
+            .mobile-auth-buttons .btn-login,
+            .mobile-auth-buttons .btn-signup {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Header -->
@@ -22,11 +378,110 @@
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
             </nav>
+            <div class="auth-buttons">
+                <button class="btn-login" id="loginBtn">Login</button>
+                <button class="btn-signup" id="signupBtn">Sign Up</button>
+            </div>
             <div class="mobile-menu-btn">
                 <i class="fas fa-bars"></i>
             </div>
         </div>
     </header>
+
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Login to Your Account</h2>
+            <form class="auth-form" id="loginForm">
+                <div class="form-group">
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" required>
+                </div>
+                <div class="form-options">
+                    <label class="checkbox-container">
+                        <input type="checkbox" id="rememberMe">
+                        <span class="checkmark"></span>
+                        Remember me
+                    </label>
+                    <a href="#" class="forgot-password">Forgot password?</a>
+                </div>
+                <button type="submit" class="btn-auth">Login</button>
+                <div class="auth-divider">
+                    <span>or</span>
+                </div>
+                <div class="social-auth">
+                    <button type="button" class="btn-social google-btn">
+                        <i class="fab fa-google"></i>
+                        Sign in with Google
+                    </button>
+                    <button type="button" class="btn-social github-btn">
+                        <i class="fab fa-github"></i>
+                        Sign in with GitHub
+                    </button>
+                </div>
+            </form>
+            <p class="auth-switch">Don't have an account? <a href="#" id="switchToSignup">Sign up</a></p>
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div class="modal" id="signupModal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Create an Account</h2>
+            <form class="auth-form" id="signupForm">
+                <div class="form-group">
+                    <label for="signupName">Full Name</label>
+                    <input type="text" id="signupName" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupEmail">Email</label>
+                    <input type="email" id="signupEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupPassword">Password</label>
+                    <input type="password" id="signupPassword" required>
+                    <div class="password-strength">
+                        <div class="strength-meter">
+                            <div class="strength-fill" id="passwordStrength"></div>
+                        </div>
+                        <span id="passwordStrengthText">Password strength</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" id="confirmPassword" required>
+                </div>
+                <div class="form-options">
+                    <label class="checkbox-container">
+                        <input type="checkbox" id="agreeTerms" required>
+                        <span class="checkmark"></span>
+                        I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+                    </label>
+                </div>
+                <button type="submit" class="btn-auth">Create Account</button>
+                <div class="auth-divider">
+                    <span>or</span>
+                </div>
+                <div class="social-auth">
+                    <button type="button" class="btn-social google-btn">
+                        <i class="fab fa-google"></i>
+                        Sign up with Google
+                    </button>
+                    <button type="button" class="btn-social github-btn">
+                        <i class="fab fa-github"></i>
+                        Sign up with GitHub
+                    </button>
+                </div>
+            </form>
+            <p class="auth-switch">Already have an account? <a href="#" id="switchToLogin">Login</a></p>
+        </div>
+    </div>
 
     <!-- Hero Section -->
     <section class="hero">
@@ -181,6 +636,268 @@
         </div>
     </footer>
 
-    <script src="js/script.js"></script>
+    <script>
+        // Auth Modal Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get modal elements
+            const loginModal = document.getElementById('loginModal');
+            const signupModal = document.getElementById('signupModal');
+            const loginBtn = document.getElementById('loginBtn');
+            const signupBtn = document.getElementById('signupBtn');
+            const switchToSignup = document.getElementById('switchToSignup');
+            const switchToLogin = document.getElementById('switchToLogin');
+            const closeButtons = document.querySelectorAll('.close');
+            
+            // Open login modal
+            if (loginBtn) {
+                loginBtn.addEventListener('click', function() {
+                    loginModal.style.display = 'block';
+                    document.body.style.overflow = 'hidden';
+                });
+            }
+            
+            // Open signup modal
+            if (signupBtn) {
+                signupBtn.addEventListener('click', function() {
+                    signupModal.style.display = 'block';
+                    document.body.style.overflow = 'hidden';
+                });
+            }
+            
+            // Switch to signup from login
+            if (switchToSignup) {
+                switchToSignup.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    loginModal.style.display = 'none';
+                    signupModal.style.display = 'block';
+                });
+            }
+            
+            // Switch to login from signup
+            if (switchToLogin) {
+                switchToLogin.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    signupModal.style.display = 'none';
+                    loginModal.style.display = 'block';
+                });
+            }
+            
+            // Close modals
+            closeButtons.forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    loginModal.style.display = 'none';
+                    signupModal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                });
+            });
+            
+            // Close modal when clicking outside
+            window.addEventListener('click', function(e) {
+                if (e.target === loginModal) {
+                    loginModal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+                if (e.target === signupModal) {
+                    signupModal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+            
+            // Form submission
+            const loginForm = document.getElementById('loginForm');
+            const signupForm = document.getElementById('signupForm');
+            
+            if (loginForm) {
+                loginForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const email = document.getElementById('loginEmail').value;
+                    const password = document.getElementById('loginPassword').value;
+                    
+                    // Simple validation
+                    if (!email || !password) {
+                        alert('Please fill in all fields');
+                        return;
+                    }
+                    
+                    // Here you would typically send data to a server
+                    console.log('Login attempt:', { email, password });
+                    alert('Login functionality would connect to a server in a real application');
+                    
+                    // Close modal and reset form
+                    loginModal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                    loginForm.reset();
+                });
+            }
+            
+            if (signupForm) {
+                signupForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const name = document.getElementById('signupName').value;
+                    const email = document.getElementById('signupEmail').value;
+                    const password = document.getElementById('signupPassword').value;
+                    const confirmPassword = document.getElementById('confirmPassword').value;
+                    const agreeTerms = document.getElementById('agreeTerms').checked;
+                    
+                    // Validation
+                    if (!name || !email || !password || !confirmPassword) {
+                        alert('Please fill in all fields');
+                        return;
+                    }
+                    
+                    if (password !== confirmPassword) {
+                        alert('Passwords do not match');
+                        return;
+                    }
+                    
+                    if (!agreeTerms) {
+                        alert('You must agree to the terms and conditions');
+                        return;
+                    }
+                    
+                    // Here you would typically send data to a server
+                    console.log('Signup attempt:', { name, email, password });
+                    alert('Signup functionality would connect to a server in a real application');
+                    
+                    // Close modal and reset form
+                    signupModal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                    signupForm.reset();
+                });
+            }
+            
+            // Password strength meter
+            const passwordInput = document.getElementById('signupPassword');
+            const strengthMeter = document.getElementById('passwordStrength');
+            const strengthText = document.getElementById('passwordStrengthText');
+            
+            if (passwordInput && strengthMeter && strengthText) {
+                passwordInput.addEventListener('input', function() {
+                    const password = passwordInput.value;
+                    const strength = calculatePasswordStrength(password);
+                    
+                    // Update strength meter
+                    strengthMeter.style.width = strength.percentage + '%';
+                    strengthMeter.style.background = strength.color;
+                    
+                    // Update strength text
+                    strengthText.textContent = strength.text;
+                    strengthText.style.color = strength.color;
+                });
+            }
+            
+            function calculatePasswordStrength(password) {
+                let strength = 0;
+                let text = 'Very Weak';
+                let color = '#ff4d4d';
+                let percentage = 0;
+                
+                if (password.length > 0) {
+                    percentage = Math.min(password.length * 5, 100);
+                    
+                    // Length check
+                    if (password.length > 6) strength += 1;
+                    if (password.length > 10) strength += 1;
+                    
+                    // Character variety checks
+                    if (/[A-Z]/.test(password)) strength += 1;
+                    if (/[0-9]/.test(password)) strength += 1;
+                    if (/[^A-Za-z0-9]/.test(password)) strength += 1;
+                    
+                    // Determine strength level
+                    if (strength < 2) {
+                        text = 'Weak';
+                        color = '#ff4d4d';
+                    } else if (strength < 4) {
+                        text = 'Medium';
+                        color = '#ffa64d';
+                        percentage = Math.max(percentage, 50);
+                    } else {
+                        text = 'Strong';
+                        color = '#33cc33';
+                        percentage = Math.max(percentage, 80);
+                    }
+                }
+                
+                return {
+                    percentage: percentage,
+                    text: text,
+                    color: color
+                };
+            }
+            
+            // Mobile menu functionality
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const navMenu = document.querySelector('nav ul');
+            
+            if (mobileMenuBtn && navMenu) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    navMenu.classList.toggle('show');
+                });
+            }
+            
+            // Add auth buttons to mobile menu
+            function checkMobile() {
+                return window.innerWidth <= 768;
+            }
+            
+            // Add auth buttons to mobile menu if needed
+            if (checkMobile() && navMenu) {
+                const mobileAuthButtons = document.createElement('div');
+                mobileAuthButtons.className = 'mobile-auth-buttons';
+                mobileAuthButtons.innerHTML = `
+                    <button class="btn-login" id="mobileLoginBtn">Login</button>
+                    <button class="btn-signup" id="mobileSignupBtn">Sign Up</button>
+                `;
+                
+                // Add to nav menu
+                navMenu.appendChild(mobileAuthButtons);
+                
+                // Add event listeners to mobile buttons
+                document.getElementById('mobileLoginBtn').addEventListener('click', function() {
+                    loginModal.style.display = 'block';
+                    document.body.style.overflow = 'hidden';
+                    navMenu.classList.remove('show');
+                });
+                
+                document.getElementById('mobileSignupBtn').addEventListener('click', function() {
+                    signupModal.style.display = 'block';
+                    document.body.style.overflow = 'hidden';
+                    navMenu.classList.remove('show');
+                });
+            }
+            
+            // Update on window resize
+            window.addEventListener('resize', function() {
+                const existingMobileAuth = document.querySelector('.mobile-auth-buttons');
+                
+                if (checkMobile() && !existingMobileAuth && navMenu) {
+                    const mobileAuthButtons = document.createElement('div');
+                    mobileAuthButtons.className = 'mobile-auth-buttons';
+                    mobileAuthButtons.innerHTML = `
+                        <button class="btn-login" id="mobileLoginBtn">Login</button>
+                        <button class="btn-signup" id="mobileSignupBtn">Sign Up</button>
+                    `;
+                    
+                    navMenu.appendChild(mobileAuthButtons);
+                    
+                    // Add event listeners
+                    document.getElementById('mobileLoginBtn').addEventListener('click', function() {
+                        loginModal.style.display = 'block';
+                        document.body.style.overflow = 'hidden';
+                        navMenu.classList.remove('show');
+                    });
+                    
+                    document.getElementById('mobileSignupBtn').addEventListener('click', function() {
+                        signupModal.style.display = 'block';
+                        document.body.style.overflow = 'hidden';
+                        navMenu.classList.remove('show');
+                    });
+                } else if (!checkMobile() && existingMobileAuth) {
+                    existingMobileAuth.remove();
+                }
+            });
+        });
+    </script>
 </body>
 </html>
